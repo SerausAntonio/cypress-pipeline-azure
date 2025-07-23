@@ -25,24 +25,11 @@ steps:
     displayName: 'Verify Cypress installation'
 
   - script: |
-      npx cypress run --spec "cypress/e2e/test-dev-azure-pipeline.cy.js"
+      npx cypress run --spec "cypress/e2e/test-dev-azure-pipeline.cy.js" --record false --headed false --browser chrome
     displayName: 'Run Cypress test'
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
       testResultsFormat: 'JUnit'
-      testResultsFiles: '**/cypress/results/*.xml'
-      failTaskOnFailedTests: true
-
-  - task: PublishPipelineArtifact@1
-    condition: succeededOrFailed()
-    inputs:
-      targetPath: cypress/videos
-      artifact: cypress-videos
-
-  - task: PublishPipelineArtifact@1
-    condition: succeededOrFailed()
-    inputs:
-      targetPath: cypress/screenshots
-      artifact: cypress-screenshots
+      tes
