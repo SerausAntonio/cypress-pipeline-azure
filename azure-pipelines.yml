@@ -32,4 +32,5 @@ steps:
     condition: succeededOrFailed()
     inputs:
       testResultsFormat: 'JUnit'
-      tes
+      testResultsFiles: '**/cypress/results/*.xml'
+      failTaskOnFailedTests: true
